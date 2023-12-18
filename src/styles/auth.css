@@ -1,0 +1,86 @@
+@import url("./general.css");
+
+:root {
+    --input-background: #ffffff1a; /* Lighter background for inputs */
+    --button-hover-color: #4e54c81a; /* Slightly lighter hover effect */
+}
+
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--background-color);
+}
+
+form {
+    background: linear-gradient(145deg, rgba(92, 40, 147, 0.85), rgba(52, 20, 107, 0.85));
+    padding: 2em;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 400px; /* Set a max-width for larger screens */
+}
+
+form h1 {
+    color: var(--text-color);
+    margin-bottom: 1em; /* Space below the title */
+}
+
+.form-field {
+    margin-bottom: 1.5em; /* Increase bottom margin for spacing */
+    position: relative; /* For absolute positioning of elements inside */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select {
+    width: 100%; /* Full width */
+    padding: 0.8em;
+    background-color: var(--input-background);
+    border: 1px solid #ffffff33; /* Add a border */
+    border-radius: 5px;
+    color: var(--text-color); /* Text color for input */
+    box-sizing: border-box; /* Include padding and border in the element's width and height */
+}
+
+select {
+    -webkit-appearance: none; /* Remove default style of select */
+    -moz-appearance: none;
+    appearance: none; /* Important to remove default arrow in FF */
+    cursor: pointer;
+}
+
+input::placeholder,
+select {
+    color: #ccc;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #fff;
+}
+
+input, select {
+    margin-top: 10px;
+}
+
+button.cool-button {
+    width: 100%;
+    padding: 0.8em;
+    background: var(--secondary-background-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+
+@media screen and (max-width: 600px) {
+    .signup-container {
+        padding: 20px; /* Add padding on smaller screens */
+    }
+}

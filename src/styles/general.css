@@ -1,0 +1,77 @@
+:root {
+  --background-color: #121212;
+  --secondary-background-color: rgb(92, 40, 147);
+  --text-color: #fff;
+}
+
+
+.cool-button {
+    background-color: var(--secondary-background-color); /* Green background */
+    z-index: 10;
+    border: none;
+    color: white;
+    padding: 30px 64px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 5px #666;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .cool-button:hover {
+    background-color: white;
+    color: var(--secondary-background-color);
+    box-shadow: 0 8px #666;
+    cursor: pointer;
+    transform: translateY(-2px);
+  }
+  
+  .cool-button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 3px #666;
+    transform: translateY(4px);
+  }
+/* Error handling */
+.error-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.871); /* Semi-transparent overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.error-modal-content {
+  background: linear-gradient(145deg, rgba(92, 40, 147, 0.85), rgba(52, 20, 107, 0.85));
+  color: var(--text-color); /* Text color for content */
+  padding: 20px;
+  border-radius: 5px;
+  min-width: 300px;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Optional: Adding some shadow for depth */
+}
+
+.error-modal-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: white; /* This can be adjusted if you have a specific color in mind */
+  color: var(--background-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition for button hover */
+}
+
+.error-modal-button:hover {
+  background-color: var(--background-color); /* Slightly darker shade on hover */
+  color: white;
+}
