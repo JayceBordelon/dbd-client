@@ -47,6 +47,7 @@ export default function LogIn() {
 
         } catch (error) {
             setError(`Something went wrong on our end...`)
+            console.log(error);
         }
     };
 
