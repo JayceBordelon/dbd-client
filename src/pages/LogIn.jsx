@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 //Styles
 import "../styles/auth.css"
@@ -8,10 +8,13 @@ import "../styles/auth.css"
 import { sendRequest } from '../helpers/apiHelper';
 import AnimatedBackDrop from '../components/AnimatedBackDrop';
 import ErrorModal from '../components/ErrorModal';
+import { currentUserIsPresent, getCurrentUser, instantiateClientSession, logOut } from '../helpers/clientSessionHelper';
 
 
 export default function LogIn() {
+    const currentUser = getCurrentUser();
     const [error, setError] = useState("");
+    const navigate = useNavigate();
     const [loginData, setLoginData] = useState({
         email: '',
         password: ''
@@ -23,17 +26,17 @@ export default function LogIn() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         // Assuming the endpoint for user login is 'users/login'
         const path = 'users/login';
-
+    
         try {
             const result = await sendRequest(path, loginData);
             switch (result) {
                 case 400:
                     setError("Invalid Credentials")
                     return;
-
+    
                 case 401:
                     setError(`No user with email: ${loginData.email} has been found in our system`)
                     return;
@@ -41,15 +44,32 @@ export default function LogIn() {
                 default:
                     break;
             }
-
-            // TODO: Redirect or handle login success
-
-
+    
+            const { user } = result.payload;
+            instantiateClientSession(user);
+            
+            // REDIRECT TO MONGO BY DEFAULT
+            navigate('/dbpage/mongodb'); // Redirect to DbPage with 'mongodb' as parameter
+    
         } catch (error) {
             setError(`Something went wrong on our end...`)
             console.log(error);
         }
     };
+
+
+    // Assert user presence
+    useEffect(()=>{
+        const assertUserPresence = async() => {
+            const present = await currentUserIsPresent();
+            if (present){
+                //bypass the sign up
+                navigate('/dbpage/mongodb'); // Redirect to DbPage with 'mongodb' as parameter
+            }
+        }
+        assertUserPresence();
+    }, []);
+    
 
     return (
         <>

@@ -1,16 +1,33 @@
-
 export const sendRequest = async (path, data) => {
-  let endpoint = import.meta.env.VITE_API_URL || 'http://localhost:3000'; // Fallback to localhost
-  const response = await fetch(`${endpoint}/${path}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  });
+  let jsonResponse = {
+    status: 500,
+    payload: {}
+  };
+  let endpoint = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
-  if (response.ok){
-    return 200;
+  try {
+    const response = await fetch(`${endpoint}/${path}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+
+    jsonResponse.status = response.status;
+
+    if (response.ok) {
+      // Only parse JSON if the response is successful
+      const json = await response.json();
+      jsonResponse.payload = json;
+    } else {
+      // Handle HTTP errors
+      console.error("HTTP Error:", response.statusText);
+    }
+  } catch (error) {
+    // Handle network errors
+    console.error("Network error:", error.message);
   }
-  return response.status;
+
+  return jsonResponse;
 }

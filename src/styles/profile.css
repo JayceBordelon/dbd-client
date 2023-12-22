@@ -1,0 +1,13 @@
+@import url("./general.css");
+:root{
+    --nav-spacer: 80px;
+}
+
+.profile-body {
+    margin-top: var(--nav-spacer); /* under the nav */
+    border-radius: 15px;
+    padding: 20px;
+    height: 100%;
+    background: var(--gray-contrast);
+    color: white;
+}

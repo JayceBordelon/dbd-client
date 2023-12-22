@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 //Styles
 import "../styles/auth.css"
@@ -8,9 +8,12 @@ import "../styles/auth.css"
 import { sendRequest } from '../helpers/apiHelper';
 import AnimatedBackDrop from '../components/AnimatedBackDrop';
 import ErrorModal from '../components/ErrorModal';
+import { instantiateClientSession, getCurrentUser, currentUserIsPresent } from '../helpers/clientSessionHelper';
 
 export default function SignUp() {
+    const currentUser = getCurrentUser();
     const [error, setError] = useState("");
+    const navigate = useNavigate();
     const [userData, setUserData] = useState({
         username: '',
         password: '',
@@ -49,10 +52,29 @@ export default function SignUp() {
                     break;
             }
             //TODO: Redirect or handle success
+            const { user } = result.payload;
+            instantiateClientSession(user);
+            
+            // REDIRECT TO MONGO BY DEFAULT
+            navigate('/dbpage/mongodb'); // Redirect to DbPage with 'mongodb' as parameter
         } catch (error) {
             setError(`Something went wrong on our end...`)
         }
     };
+
+
+    // Assert user presence
+    useEffect(()=>{
+        const assertUserPresence = async() => {
+            const present = await currentUserIsPresent();
+            if (present){
+                //bypass the sign up
+                navigate('/dbpage/mongodb'); // Redirect to DbPage with 'mongodb' as parameter
+            }
+        }
+        assertUserPresence();
+    }, []);
+    
 
     return (
         <>
