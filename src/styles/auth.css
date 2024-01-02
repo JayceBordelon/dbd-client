@@ -5,12 +5,16 @@
     --button-hover-color: #4e54c81a; /* Slightly lighter hover effect */
 }
 
+html, body{
+    justify-content: center;
+    display: flex;
+}
+
 .signup-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    /* height: 100vh; */
     background-color: var(--background-color);
 }
 

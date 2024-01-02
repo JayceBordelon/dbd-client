@@ -4,6 +4,12 @@
     --nav-spacer: 80px
 }
 
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: scroll; /* Re-enable scroll */
+}
+
 .dbpage-body {
     margin-top: var(--nav-spacer); /* under the nav */
     border-radius: 15px;
@@ -11,4 +17,5 @@
     height: 100%;
     background: var(--gray-contrast);
     color: white;
+    overflow: scroll;
 }

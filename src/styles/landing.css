@@ -5,12 +5,13 @@
 body, html {
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Disable scroll */
+    /* overflow: hidden; Disable scroll */
 }
 
 
 .intro-container{
-    width: 100%;
+    max-width: 100%;
+    max-height: 90%;
     border-radius: 15px;
     text-align: center;
     display: auto;
