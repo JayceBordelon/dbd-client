@@ -48,8 +48,7 @@ export default function LogIn() {
             const { user } = result.payload;
             instantiateClientSession(user);
             
-            // REDIRECT TO MONGO BY DEFAULT
-            navigate('/dbpage/mongodb'); // Redirect to DbPage with 'mongodb' as parameter
+            navigate('/dbpage'); // Redirect to DbPage
     
         } catch (error) {
             setError(`Something went wrong on our end...`)
@@ -64,7 +63,7 @@ export default function LogIn() {
             const present = await currentUserIsPresent();
             if (present){
                 //bypass the sign up
-                navigate('/dbpage/mongodb'); // Redirect to DbPage with 'mongodb' as parameter
+                navigate('/dbpage'); // Redirect to DbPage
             }
         }
         assertUserPresence();

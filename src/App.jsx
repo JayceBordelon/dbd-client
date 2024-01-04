@@ -19,7 +19,7 @@ function App() {
           <Route path="/login" element={<LogIn />} />
           <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/dbpage/:dbname" element={<DbPage />} />
+          <Route path="/dbpage" element={<DbPage />} />
         </Routes>
       </div>
     </Router>

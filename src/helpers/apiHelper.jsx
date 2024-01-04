@@ -31,3 +31,33 @@ export const sendRequest = async (path, data) => {
 
   return jsonResponse;
 }
+
+
+//**************EXAMPLE OGF GPT REF FROM COMPONENT */
+
+// const [result,setResult] = useState("");
+  // useEffect(() => {
+  //   const testGpt = async() => {
+  //     const endpoint = 'gpt/generate'
+  //     const res = await sendRequest(
+  //       endpoint,
+  //       {
+  //         prompt: 'generate a super fancy mongo schem in node.js for a user to have a first name, last name, email, and hashed password.'
+  //       }
+        
+  //     )
+  //     setResult(res.payload);
+  //   }
+  //   testGpt();
+  // }, [])
+  // if (dbType == "mongodb"){
+  //   return (
+  //     <>
+  //     {result ? <h2>{result}</h2> : <h2>Getting your schema...</h2>}
+  //     </>
+  //   )
+  // } else{
+  //   return (
+  //     <h1>{dbType} Support Coming Soon...</h1>
+  //   )
+  // }

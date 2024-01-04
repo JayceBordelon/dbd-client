@@ -7,7 +7,10 @@
 body, html {
     margin: 0;
     padding: 0;
-    overflow: scroll; /* Re-enable scroll */
+    overflow: auto; /* Re-enable scroll */
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }
 
 .dbpage-body {
@@ -17,5 +20,11 @@ body, html {
     height: 100%;
     background: var(--gray-contrast);
     color: white;
-    overflow: scroll;
+
+}
+
+@media screen and (max-width: 600px) {
+    .dbpage-body{
+        width: 80% !important;
+    }
 }

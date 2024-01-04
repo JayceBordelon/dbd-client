@@ -69,7 +69,7 @@ export default function SignUp() {
             const present = await currentUserIsPresent();
             if (present){
                 //bypass the sign up
-                navigate('/dbpage/mongodb'); // Redirect to DbPage with 'mongodb' as parameter
+                navigate('/dbpage'); // Redirect to DbPage with 'mongodb' as parameter
             }
         }
         assertUserPresence();

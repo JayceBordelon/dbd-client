@@ -1,7 +1,7 @@
 :root {
   --background-color: #121212;
   --secondary-background-color: rgb(92, 40, 147);
-  --db-color: #55AD48; /*mongo by default*/
+  --db-color: var(--secondary-background-color); /*mongo by default*/
   --gray-contrast: rgba(69, 69, 69, 0.869);
   --text-color: #fff;
 }
