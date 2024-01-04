@@ -26,7 +26,7 @@ export default function ProjectConsole({dbType}) {
       setResult(res.payload);
     }
     testGpt();
-  })
+  }, [])
   if (dbType == "mongodb"){
     return (
       <>
